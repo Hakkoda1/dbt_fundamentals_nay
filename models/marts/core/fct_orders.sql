@@ -7,7 +7,7 @@ with orders as (
 payments as (
 
     select * from {{ ref('stg_payments') }}
-
+    where payment_status = 'success'
 ),
 
 order_amounts as (
