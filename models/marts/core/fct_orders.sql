@@ -16,7 +16,7 @@ order_amounts as (
 
         orders.order_id,
         orders.customer_id,
-        orders.order_date
+        orders.order_date,
         payments.amount
 
     from orders
