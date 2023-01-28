@@ -1,4 +1,16 @@
-with final as (
+with customers as (
+
+    select * from {{ ref('stg_customers') }}
+
+),
+
+customer_orders as (
+
+    select * from {{ ref('fct_customer_orders') }}
+
+),
+
+final as (
 
     select
         customers.customer_id,
@@ -8,9 +20,9 @@ with final as (
         customer_orders.most_recent_order_date,
         coalesce(customer_orders.number_of_orders, 0) as number_of_orders
 
-    from {{ ref('stg_customers') }}
+    from customers
 
-    left join {{ ref('fct_customer_orders') }} using (customer_id)
+    left join customer_orders using (customer_id)
 
 )
 
