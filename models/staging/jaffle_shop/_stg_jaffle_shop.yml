@@ -2,14 +2,18 @@ version: 2
 
 models:
   - name: stg_customers
+    description: each row represents one unique customer
     columns:
       - name: customer_id
+        description: primary key of stg_customers
         tests:
           - unique
           - not_null
   - name: stg_orders
+    description: each order uniquely belongs to a customer
     columns:
       - name: order_id
+        description: primary key of stg_orders
         tests:
           - unique
           - not_null
